@@ -14,13 +14,13 @@ RCNamespaceOption has only been tested on on MediaWiki 1.18+.
 1. Move the RCNamespaceOption directory to your site's `extensions` directory.
 2. Edit `LocalSettings.php` and add the following line near the bottom:
 
-    require_once("$IP/extensions/RCNamespaceOption/RCNamespaceOption.php");
+        require_once("$IP/extensions/RCNamespaceOption/RCNamespaceOption.php");
     
-If you want don't want the default namespace filters to be setup, then set
+If you don't want the default namespace filters to be setup, then set
 `$rcNamespaceOptionSetup` before you require the extension:
 
-	$rcNamespaceOptionSetup = false;
-	require_once("$IP/extensions/RCNamespaceOption/RCNamespaceOption.php");
+    $rcNamespaceOptionSetup = false;
+    require_once("$IP/extensions/RCNamespaceOption/RCNamespaceOption.php");
 	
 See `RCNamespaceOption::setup()` for how to create new filters.
 
