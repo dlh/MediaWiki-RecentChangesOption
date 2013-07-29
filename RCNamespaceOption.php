@@ -46,7 +46,7 @@ if (!isset($rcNamespaceOptionSetup) || $rcNamespaceOptionSetup)
 $wgExtensionCredits["other"][] = array(
         "path" => __FILE__,
         "name" => "RCNamespaceOption",
-        "description" => "Adds options to manage the visibility of certain namespaces on the Recent Changes page.",
+        "description" => "Adds options to manage the default visibility of certain namespaces on the Recent Changes page.",
         "author" => "dlh",
         "url" => "http://github.com/dlh/RCNamespaceOption"
 );
