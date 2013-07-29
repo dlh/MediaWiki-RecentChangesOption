@@ -25,7 +25,9 @@ class RCNamespaceOption
 
     function onSpecialRecentChangesFilters($special, $filters)
     {
-        $filters[$this->optionName] = array("msg" => $this->messageKey, "default" => $this->default);
+        $isSelectedNamespace = $special->getContext()->getRequest()->getVal("namespace") == $this->namespace;
+        $default = $this->default && !$isSelectedNamespace;
+        $filters[$this->optionName] = array("msg" => $this->messageKey, "default" => $default);
         return true;
     }
 
