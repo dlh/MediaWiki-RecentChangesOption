@@ -16,7 +16,7 @@ RCNamespaceOption has only been tested on on MediaWiki 1.18+.
 
         require_once("$IP/extensions/RCNamespaceOption/RCNamespaceOption.php");
     
-If you don't want the default namespace filters to be setup, then set
+If you don't want the default namespace filters to be installed, then set
 `$rcNamespaceOptionSetup` before you require the extension:
 
     $rcNamespaceOptionSetup = false;
