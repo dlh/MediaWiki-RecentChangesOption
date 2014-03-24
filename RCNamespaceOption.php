@@ -23,7 +23,7 @@ class RCNamespaceOption
         $wgHooks["SpecialRecentChangesQuery"][] = $this;
     }
 
-    function onSpecialRecentChangesFilters($special, $filters)
+    function onSpecialRecentChangesFilters($special, &$filters)
     {
         $isSelectedNamespace = $special->getContext()->getRequest()->getVal("namespace") == $this->namespace;
         $default = $this->default && !$isSelectedNamespace;
@@ -31,7 +31,7 @@ class RCNamespaceOption
         return true;
     }
 
-    function onSpecialRecentChangesQuery($conds, $tables, $join_conds, $opts, $query_options, $select)
+    function onSpecialRecentChangesQuery(&$conds, &$tables, &$join_conds, $opts, &$query_options, &$select)
     {
         if ($opts->getValue($this->optionName))
             $conds[] = "rc_namespace != " . $this->namespace;
