@@ -2,12 +2,12 @@
 
 // Copyright (C) 2012 DLH
 
-class RCNamespaceOption
+class RecentChangesNamespaceOption
 {
     static function setup()
     {
         // http://www.mediawiki.org/wiki/Manual:Namespace_constants
-        new RCNamespaceOption("hideuserlog", "rcshowhideusercreationlog", NS_USER);
+        new RecentChangesNamespaceOption("hideuserlog", "rcshowhideusercreationlog", NS_USER);
     }
 
     function __construct($optionName, $messageKey, $namespace, $default=true)
@@ -39,16 +39,16 @@ class RCNamespaceOption
     }
 }
 
-$wgExtensionMessagesFiles["RCNamespaceOption"] = dirname( __FILE__ ) . "/RCNamespaceOption.i18n.php";
-if (!isset($rcNamespaceOptionSetup) || $rcNamespaceOptionSetup)
-    RCNamespaceOption::setup();
+$wgExtensionMessagesFiles["RecentChangesNamespaceOption"] = dirname( __FILE__ ) . "/RecentChangesNamespaceOption.i18n.php";
+if (!isset($recentChangesNamespaceOptionSetup) || $recentChangesNamespaceOptionSetup)
+    RecentChangesNamespaceOption::setup();
 
 $wgExtensionCredits["other"][] = array(
         "path" => __FILE__,
-        "name" => "RCNamespaceOption",
+        "name" => "RecentChangesNamespaceOption",
         "description" => "Adds options to manage the default visibility of certain namespaces on the Recent Changes page.",
         "author" => "dlh",
-        "url" => "http://github.com/dlh/RCNamespaceOption"
+        "url" => "http://github.com/dlh/MediaWiki-RecentChangesNamespaceOption"
 );
 
 ?>
