@@ -3,7 +3,8 @@
 $messages = array();
 
 $messages["en"] = array(
-    "rcshowhideusercreationlog" => "$1 user creation log",
+    // Examples: "Hide User namespace", "Show User namespace"
+    "recentchangesnamespaceoption-template" => "$1 $2 namespace"
 );
 
 ?>

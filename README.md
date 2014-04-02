@@ -25,15 +25,23 @@ RecentChangesNamespaceOption has only been tested on on MediaWiki 1.18+.
 2. Edit `LocalSettings.php` and add the following line near the bottom:
 
         require_once("$IP/extensions/RecentChangesNamespaceOption/RecentChangesNamespaceOption.php");
+3. Set the default visibility of certain namespaces by creating an instance of
+   the `RecentChangesNamespaceOption` class. Refer to the documentation for
+   [namespace constants](http://mediawiki.org/wiki/Manual:Namespace_constants),
+   and the examples below.
 
-The base setup installs a filter to hide the `User` namespace by default (the
-`User Creation Log`).  If you don't want the provided filters to be installed,
-then set `$recentChangesNamespaceOptionSetup` before you require the extension:
+Examples
+--------
 
-    $recentChangesNamespaceOptionSetup = false;
-    require_once("$IP/extensions/RecentChangesNamespaceOption/RecentChangesNamespaceOption.php");
+    // Hide the User namespace by default
+    new RecentChangesNamespaceOption(NS_USER);
 
-See `RecentChangesNamespaceOption::setup()` for how to create new filters.
+    // Hide the User namespace and its associated talk page by default
+    new RecentChangesNamespaceOption(NS_USER, /* $filterAssociated */ true);
+
+    // Do not hide the User namespace by default, but still provide an easy way
+    // for users to hide it
+    new RecentChangesNamespaceOption(NS_USER, false, /* $hideDefault */ false);
 
 License
 -------
