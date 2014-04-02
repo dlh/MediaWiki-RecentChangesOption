@@ -4,6 +4,8 @@ RecentChangesNamespaceOption
 A MediaWiki extension that adds options to manage the default visibility of
 certain namespaces on the `Recent Changes` page.
 
+![Screenshot](http://dlh.github.io/MediaWiki-RecentChangesNamespaceOption/screenshot.png)
+
 Project site: http://github.com/dlh/MediaWiki-RecentChangesNamespaceOption
 
 Download
