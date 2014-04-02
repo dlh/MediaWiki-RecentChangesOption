@@ -55,8 +55,6 @@ class RecentChangesNamespaceOption
 
     function setCanonicalNamespaceDependentVariables()
     {
-        global $wgLang;
-
         $canonicalName = $this->getCanonicalName();
         $this->optionName = "hide" . strtolower($canonicalName);
         $this->messageKey = "recentchangesnamespaceoption-option-" . $this->optionName;
