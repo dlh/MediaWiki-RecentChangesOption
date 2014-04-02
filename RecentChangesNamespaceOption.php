@@ -70,10 +70,7 @@ class RecentChangesNamespaceOption
 
         $cache = Language::getLocalisationCache();
         if (!$cache->getSubitem($wgLang->getCode(), "messages", $this->messageKey))
-        {
-            $localisationCache = Language::getLocalisationCache();
-            $localisationCache->recache($wgLang->getCode());
-        }
+            $cache->recache($wgLang->getCode());
     }
 
     function getCanonicalName()
