@@ -12,10 +12,9 @@ class RecentChangesNamespaceOption
         $this->associatedNamespace = $filterAssociated ? MWNamespace::getAssociated($namespace) : null;
         $this->hideDefault = $hideDefault;
 
-        // We need $wgLang to be initialized to set these variables
+        // We need the canonical names to be initialized to set these variables
         $this->optionName = null;
         $this->messageKey = null;
-        $this->formattedName = null;
 
         $wgHooks["SpecialRecentChangesFilters"][] = $this;
         $wgHooks["SpecialRecentChangesQuery"][] = $this;
@@ -24,7 +23,7 @@ class RecentChangesNamespaceOption
 
     function onSpecialRecentChangesFilters($special, &$filters)
     {
-        $this->setUserDependentVariables();
+        $this->setCanonicalNamespaceDependentVariables();
         $this->checkCache();
 
         // Use a sensible default value if the user is filtering the RC page to a specific namespace.
@@ -50,15 +49,14 @@ class RecentChangesNamespaceOption
     function onLocalisationCacheRecache($cache, $code, &$allData)
     {
         if ($this->messageKey)
-            $allData["messages"][$this->messageKey] = wfMessage("recentchangesnamespaceoption-template", array('$1', $this->formattedName))->parse();
+            $allData["messages"][$this->messageKey] = wfMessage("recentchangesnamespaceoption-template", array('$1', $this->getFormattedName()))->parse();
         return true;
     }
 
-    function setUserDependentVariables()
+    function setCanonicalNamespaceDependentVariables()
     {
         global $wgLang;
 
-        $this->formattedName = $this->getFormattedName();
         $canonicalName = $this->getCanonicalName();
         $this->optionName = "hide" . strtolower($canonicalName);
         $this->messageKey = "recentchangesnamespaceoption-option-" . $this->optionName;
