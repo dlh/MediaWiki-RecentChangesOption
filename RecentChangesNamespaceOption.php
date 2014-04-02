@@ -23,7 +23,9 @@ class RecentChangesNamespaceOption
 
     function onSpecialRecentChangesFilters($special, &$filters)
     {
-        $this->setCanonicalNamespaceDependentVariables();
+        $this->optionName = "hide" . strtolower($this->getCanonicalName());
+        $this->messageKey = "recentchangesnamespaceoption-option-" . $this->optionName;
+
         $this->checkCache();
 
         // Use a sensible default value if the user is filtering the RC page to a specific namespace.
@@ -51,13 +53,6 @@ class RecentChangesNamespaceOption
         if ($this->messageKey)
             $allData["messages"][$this->messageKey] = wfMessage("recentchangesnamespaceoption-template", array('$1', $this->getFormattedName()))->parse();
         return true;
-    }
-
-    function setCanonicalNamespaceDependentVariables()
-    {
-        $canonicalName = $this->getCanonicalName();
-        $this->optionName = "hide" . strtolower($canonicalName);
-        $this->messageKey = "recentchangesnamespaceoption-option-" . $this->optionName;
     }
 
     function checkCache()
