@@ -6,7 +6,8 @@ certain namespaces on the `Recent Changes` page.
 
 ![Screenshot](http://dlh.github.io/MediaWiki-RecentChangesNamespaceOption/screenshot.png)
 
-Project site: http://github.com/dlh/MediaWiki-RecentChangesNamespaceOption
+* Project site: http://github.com/dlh/MediaWiki-RecentChangesNamespaceOption
+* MediaWiki page: http://www.mediawiki.org/wiki/Extension:RecentChangesNamespaceOption
 
 Download
 --------
