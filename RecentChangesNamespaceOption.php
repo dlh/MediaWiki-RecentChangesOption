@@ -82,7 +82,7 @@ class RecentChangesNamespaceOption
         if ($name === false)
             throw new MWException("Could not get formatted name for namespace '$this->namespace'");
         else if (!$name)
-            $name = "Main";
+            $name = str_replace(array("(", ")"), "", wfMessage("blanknamespace")->parse());
         return $name;
     }
 }
