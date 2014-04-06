@@ -21,7 +21,7 @@ A zip file snapshot of the repository is also available on the project site.
 Installation
 ------------
 
-RecentChangesNamespaceOption has only been tested on on MediaWiki 1.18+.
+RecentChangesNamespaceOption has only been tested on MediaWiki 1.18+.
 
 1. Move the `RecentChangesNamespaceOption` directory to your site's
    `extensions` directory.
