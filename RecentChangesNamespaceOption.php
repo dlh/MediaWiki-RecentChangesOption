@@ -30,10 +30,7 @@ class RecentChangesNamespaceOption
 
         // Use a sensible default value if the user is filtering the RC page to a specific namespace.
         $selectedNamespace = $special->getRequest()->getIntOrNull("namespace");
-        $isSelectedNamespace = $selectedNamespace !== null && (
-            $selectedNamespace === $this->namespace ||
-            ($this->associatedNamespace !== null && $selectedNamespace === $this->associatedNamespace)
-        );
+        $isSelectedNamespace = $selectedNamespace !== null && ($selectedNamespace === $this->namespace || $selectedNamespace === $this->associatedNamespace);
         $default = $this->hideDefault && !$isSelectedNamespace;
 
         $filters[$this->optionName] = array("msg" => $this->messageKey, "default" => $default);
