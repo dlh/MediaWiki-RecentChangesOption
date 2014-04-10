@@ -1,50 +1,64 @@
-RecentChangesNamespaceOption
-============================
+RecentChangesOption
+===================
 
 A MediaWiki extension that adds options to manage the default visibility of
-certain namespaces on the `Recent Changes` page.
+certain log types or namespaces on the `Recent Changes` page.
 
-![Screenshot](http://dlh.github.io/MediaWiki-RecentChangesNamespaceOption/screenshot.png)
+`RecentChangesOption` will provide messages in the requesting user's language
+preference. MediaWiki provides translations for log types and namespace names,
+so the messages can be automatically generated.
 
-* Project site: http://github.com/dlh/MediaWiki-RecentChangesNamespaceOption
-* MediaWiki page: http://www.mediawiki.org/wiki/Extension:RecentChangesNamespaceOption
+![Screenshot](http://dlh.github.io/MediaWiki-RecentChangesOption/screenshot.png)
+
+* Project site: http://github.com/dlh/MediaWiki-RecentChangesOption
+* MediaWiki page: http://www.mediawiki.org/wiki/Extension:RecentChangesOption
 
 Download
 --------
 
 Using git:
 
-    git clone https://github.com/dlh/MediaWiki-RecentChangesNamespaceOption.git RecentChangesNamespaceOption
+    git clone https://github.com/dlh/MediaWiki-RecentChangesOption.git RecentChangesOption
 
 A zip file snapshot of the repository is also available on the project site.
 
 Installation
 ------------
 
-RecentChangesNamespaceOption has only been tested on MediaWiki 1.18+.
+RecentChangesOption has only been tested on MediaWiki 1.18+.
 
-1. Move the `RecentChangesNamespaceOption` directory to your site's
-   `extensions` directory.
+1. Move the `RecentChangesOption` directory to your site's `extensions` directory.
 2. Edit `LocalSettings.php` and add the following line near the bottom:
 
-        require_once("$IP/extensions/RecentChangesNamespaceOption/RecentChangesNamespaceOption.php");
-3. Set the default visibility of certain namespaces by creating an instance of
-   the `RecentChangesNamespaceOption` class. Refer to the documentation for
-   [namespace constants](http://mediawiki.org/wiki/Manual:Namespace_constants),
-   and the examples below.
+        require_once("$IP/extensions/RecentChangesOption/RecentChangesOption.php");
+3. Set the default visibility of certain log types or namespaces by creating an
+   instance of the `RecentChangesOption` class. Refer to the documentation for
+   [log types (the `letype` list)](https://mediawiki.org/wiki/API:Logevents#Parameters),
+   [namespace constants](http://mediawiki.org/wiki/Manual:Namespace_constants), and the
+   examples below.
 
 Examples
 --------
 
-    // Hide the User namespace by default
-    new RecentChangesNamespaceOption(NS_USER);
+    // Hide the User creation log by default
+    (new RecentChangesOption())->filterLogType("newusers");
 
-    // Hide the User namespace and its associated talk page by default
-    new RecentChangesNamespaceOption(NS_USER, /* $filterAssociated */ true);
+    // Do not hide the User creation log by default, but still provide an easy
+    // way for users to hide it
+    (new RecentChangesOption(/* $hideDefault */ false))->filterLogType("newusers");
 
-    // Do not hide the User namespace by default, but still provide an easy way
-    // for users to hide it
-    new RecentChangesNamespaceOption(NS_USER, false, /* $hideDefault */ false);
+    // Hide the Template namespace by default
+    (new RecentChangesOption())->filterNamespace(NS_TEMPLATE);
+
+    // Hide the Template namespace and its associated talk page by default
+    (new RecentChangesOption(true, /* $filterAssociatedNamespace */ true))->filterNamespace(NS_TEMPLATE);
+
+    // Hide the User creation log, Block log; Template, MediaWiki namespaces
+    // (and their talk pages) by default
+    (new RecentChangesOption(true, true))->filterLogType("newusers", "block")->filterNamespace(NS_TEMPLATE, NS_MEDIAWIKI);
+
+    // Hide all public logs
+    (new RecentChangesOption())->filterLogType("");
 
 License
 -------
