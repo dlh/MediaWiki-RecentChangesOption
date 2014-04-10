@@ -52,7 +52,7 @@ class RecentChangesOption
 
         // Use a sensible default value if the user is filtering the RC page to
         // a specific namespace.
-        $default = $this->hideDefault && $special->getRequest()->getIntOrNull("namespace") == null;
+        $default = $this->hideDefault && $special->getRequest()->getIntOrNull("namespace") === null;
 
         $filters[$this->optionName] = array(
             "msg" => $this->messageKey,
