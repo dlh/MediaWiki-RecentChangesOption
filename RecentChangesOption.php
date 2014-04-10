@@ -162,7 +162,7 @@ class RecentChangesOption
     }
 }
 
-$wgExtensionMessagesFiles["RecentChangesOption"] = dirname( __FILE__ ) . "/RecentChangesNamespaceOption.i18n.php";
+$wgExtensionMessagesFiles["RecentChangesOption"] = dirname( __FILE__ ) . "/RecentChangesOption.i18n.php";
 $wgExtensionCredits["other"][] = array(
         "path" => __FILE__,
         "name" => "RecentChangesOption",
