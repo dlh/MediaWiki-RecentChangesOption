@@ -41,24 +41,24 @@ Examples
 --------
 
     // Hide the User creation log by default
-    (new RecentChangesOption())->filterLogType("newusers");
+    RecentChangesOption::create()->filterLogType("newusers");
 
     // Do not hide the User creation log by default, but still provide an easy
     // way for users to hide it
-    (new RecentChangesOption(/* $hideDefault */ false))->filterLogType("newusers");
+    RecentChangesOption::create(/* $hideDefault */ false)->filterLogType("newusers");
 
     // Hide the Template namespace by default
-    (new RecentChangesOption())->filterNamespace(NS_TEMPLATE);
+    RecentChangesOption::create()->filterNamespace(NS_TEMPLATE);
 
     // Hide the Template namespace and its associated talk page by default
-    (new RecentChangesOption(true, /* $filterAssociatedNamespace */ true))->filterNamespace(NS_TEMPLATE);
+    RecentChangesOption::create(true, /* $filterAssociatedNamespace */ true)->filterNamespace(NS_TEMPLATE);
 
     // Hide the User creation log, Block log; Template, MediaWiki namespaces
     // (and their talk pages) by default
-    (new RecentChangesOption(true, true))->filterLogType("newusers", "block")->filterNamespace(NS_TEMPLATE, NS_MEDIAWIKI);
+    RecentChangesOption::create(true, true)->filterLogType("newusers", "block")->filterNamespace(NS_TEMPLATE, NS_MEDIAWIKI);
 
     // Hide all public logs
-    (new RecentChangesOption())->filterLogType("");
+    RecentChangesOption::create()->filterLogType("");
 
 License
 -------
