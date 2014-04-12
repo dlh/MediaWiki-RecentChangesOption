@@ -4,6 +4,13 @@
 
 class RecentChangesOption
 {
+    // Factory method to get around being unable to chain method calls on new
+    // objects on PHP < 5.4.
+    static function create($hideDefault=true, $filterAssociatedNamespace=false)
+    {
+        return new self($hideDefault, $filterAssociatedNamespace);
+    }
+
     function __construct($hideDefault=true, $filterAssociatedNamespace=false)
     {
         $this->hideDefault = $hideDefault;
