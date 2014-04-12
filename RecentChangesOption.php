@@ -100,7 +100,7 @@ class RecentChangesOption
             }
             if (!empty($this->allNamespaces))
             {
-                $namespaces = $wgLang->commaList(array_map(array(self, "getNamespaceFormattedName"), $this->namespaces));
+                $namespaces = $wgLang->commaList(array_map(array(__CLASS__, "getNamespaceFormattedName"), $this->namespaces));
                 $options[] = wfMessage(
                     "recentchangesoption-template-namespace",
                     array($namespaces, count($this->namespaces))
@@ -125,8 +125,8 @@ class RecentChangesOption
 
     protected function getCanonicalName()
     {
-        $logTypes = array_map(array(self, "getLogTypeCanonicalName"), $this->logTypes);
-        $namespaces = array_map(array(self, "getNamespaceCanonicalName"), $this->namespaces);
+        $logTypes = array_map(array(__CLASS__, "getLogTypeCanonicalName"), $this->logTypes);
+        $namespaces = array_map(array(__CLASS__, "getNamespaceCanonicalName"), $this->namespaces);
         return implode("_", array_merge($logTypes, $namespaces));
     }
 
